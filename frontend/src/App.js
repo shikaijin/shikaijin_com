@@ -1,9 +1,10 @@
 import "./App.css";
-
+import { Typography } from "@material-ui/core";
 function App() {
   return (
-    <div className="App">
-      <h1>Welcome to my HomePage</h1>
+    <div>
+      <Typography variant="h1">Welcome to Mysite</Typography>
+      <Typography variant="h2">coming soon...</Typography>
     </div>
   );
 }
