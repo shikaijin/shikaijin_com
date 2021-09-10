@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "40%",
     maxWidth: "100%",
     backgroundImage: `url(${logo})`,
-    backgroundSize: "100% 100%",
+    backgroundSize: "cover",
     backgroundPosition: "center",
   },
   contact: {
