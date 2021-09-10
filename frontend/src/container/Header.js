@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+  },
+  githubButton: {
+    marginLeft: "1rem",
   },
   title: {
     flexGrow: 1,
@@ -35,9 +40,35 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            MyPortfolio
+            My Portfolio
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Box
+            display="flex"
+            flexWrap="wrap"
+            alignContent="flex-start"
+            sx={{ maxWidth: 400 }}
+          >
+            <Box p={2}>
+              <Button color="inherit">Home</Button>
+            </Box>
+            <Box p={2}>
+              <Button color="inherit">CV</Button>
+            </Box>
+            <Box p={2}>
+              <Button color="inherit">Projects</Button>
+            </Box>
+            <Box p={1}>
+              <IconButton
+                edge="start"
+                color="inherit"
+                className={classes.githubButton}
+                aria-label="github"
+                href="https://github.com/shikaijin"
+              >
+                <GitHubIcon />
+              </IconButton>
+            </Box>
+          </Box>
         </Toolbar>
       </AppBar>
     </div>
