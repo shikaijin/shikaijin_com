@@ -4,9 +4,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Box } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
 import logo from "../src/static/images/logo.png";
-import Link from "@material-ui/core/Link";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,16 +19,18 @@ const useStyles = makeStyles((theme) => ({
     width: 700,
     minWidth: "40%",
     maxWidth: "100%",
-    textAlign: "center",
+    textAlign: "left",
   },
   title: {
     fontWeight: 500,
-    marginTop: "15rem",
+    marginTop: "10rem",
     marginBottom: "2rem",
+    marginLeft: "3rem",
     color: "balck",
   },
-  uwLink: {
+  uwButton: {
     marginBlock: "3rem",
+    marginLeft: "3rem",
   },
   image: {
     width: 700,
@@ -43,22 +44,25 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
-  const preventDefault = (event) => event.preventDefault();
   return (
     <React.Fragment>
       <CssBaseline />
       <div>
         <Box className={classes.root} width="100%">
           <Box className={classes.intro} style={{ height: "10vh" }}>
-            <Typography variant="h3" className={classes.title}>
-              Welcome to Mysite
+            <Typography variant="h5" className={classes.title}>
+              Hello,
+              <Typography variant="h3">I'm Shikai Jin</Typography>
+              <Typography variant="h5" color="primary">
+                Master of Management in Data Analytics Candidate
+              </Typography>
+              <Typography variant="subtitle1">University of Windsor</Typography>
             </Typography>
-            <Typography variant="h5">coming soon...</Typography>
-            <Typography variant="subtitle1" className={classes.uwLink}>
+            <Typography variant="subtitle1" className={classes.uwButton}>
               Related Page:
-              <Link href="https://uwcssa.ca/" onClick={preventDefault}>
+              <Button size="small" href="https://uwcssa.ca/">
                 UWCSSA
-              </Link>
+              </Button>
             </Typography>
           </Box>
           <Box
@@ -66,6 +70,7 @@ function App() {
             style={{ height: "90vh", margin: 0, padding: 0 }}
           />
         </Box>
+        <Box></Box>
       </div>
     </React.Fragment>
   );
