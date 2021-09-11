@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import Box from "@material-ui/core/Box";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,13 +50,19 @@ export default function ButtonAppBar() {
             sx={{ maxWidth: 400 }}
           >
             <Box p={2}>
-              <Button color="inherit">Home</Button>
+              <Button color="inherit" component={Link} to="/">
+                Home
+              </Button>
             </Box>
             <Box p={2}>
-              <Button color="inherit">CV</Button>
+              <Button color="inherit" component={Link} to="/cv">
+                CV
+              </Button>
             </Box>
             <Box p={2}>
-              <Button color="inherit">Projects</Button>
+              <Button color="inherit" component={Link} to="/projects">
+                Projects
+              </Button>
             </Box>
             <Box p={1}>
               <IconButton
