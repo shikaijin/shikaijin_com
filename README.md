@@ -60,7 +60,7 @@
 
 <li>Sign Up for an <a href="https://aws.amazon.com/getting-started/?nc1=h_ls">AWS</a> account</li>
 
-<li>Buy a domain at <a href="https://console.aws.amazon.com/route53/home#DomainRegistration">AWS route 53</a></li>
+<li>Buy a domain at <a href="https://aws.amazon.com/route53/">AWS route 53</a></li>
 
 <li>Create a New React App</li>
 <pre><code>npx create-react-app frontend</code></pre>
