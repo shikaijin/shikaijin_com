@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import Box from "@material-ui/core/Box";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,6 +22,11 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+  },
+  navbar: {
+    display: "flex",
+    flexWrap: "wrap",
+    alignContent: "flex-start",
   },
 }));
 
@@ -42,20 +48,26 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             My Portfolio
           </Typography>
-          <Box
-            display="flex"
-            flexWrap="wrap"
-            alignContent="flex-start"
-            sx={{ maxWidth: 400 }}
-          >
+          <Box className={classes.navbar} sx={{ maxWidth: 500 }}>
             <Box p={2}>
-              <Button color="inherit">Home</Button>
+              <Button color="inherit" component={Link} to="/">
+                Home
+              </Button>
             </Box>
             <Box p={2}>
-              <Button color="inherit">CV</Button>
+              <Button color="inherit" component={Link} to="/cv">
+                CV
+              </Button>
             </Box>
             <Box p={2}>
-              <Button color="inherit">Projects</Button>
+              <Button color="inherit" component={Link} to="/skills">
+                Skills
+              </Button>
+            </Box>
+            <Box p={2}>
+              <Button color="inherit" component={Link} to="/projects">
+                Projects
+              </Button>
             </Box>
             <Box p={1}>
               <IconButton
