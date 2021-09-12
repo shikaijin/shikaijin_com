@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
+    marginTop: "2rem",
     marginBottom: "2rem",
   },
   title: {
@@ -85,7 +86,7 @@ function Projects() {
                   </Typography>
                   <Typography>
                     A web built for UWCSSA, University of Windsor students and
-                    the local communitiy.
+                    the local community.
                   </Typography>
                 </CardContent>
                 <CardActions>

@@ -7,8 +7,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
+    marginTop: "2rem",
     marginBottom: "2rem",
-
     backgroundSize: "100% 100%",
     backgroundPosition: "center",
   },

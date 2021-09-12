@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
+    marginTop: "2rem",
     marginBottom: "2rem",
   },
   title: {
@@ -68,13 +69,13 @@ function CV() {
               <Typography>MMgt</Typography>
               <Typography>Data Analytics</Typography>
               <Typography>2021 - </Typography>
-              <Typography>Unoversity of Windsor. Windsor, ON.</Typography>
+              <Typography>University of Windsor. Windsor, ON.</Typography>
             </Box>
             <Box m={2} variant="subtitle1">
               <Typography>Certificate</Typography>
               <Typography>
                 Foundations of Analytics: Business Intelligence, Data Analysis
-                and Data Science, 2021. Mcmater University CCE. Hamilton, ON.
+                and Data Science, 2021. McMater University CCE. Hamilton, ON.
               </Typography>
             </Box>
             <Box m={2} variant="subtitle1">
