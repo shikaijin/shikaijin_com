@@ -5,6 +5,13 @@ import Home from "./container/Home";
 import CV from "./container/CV";
 import Header from "./container/Header";
 import Projects from "./container/Projects";
+
+import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import Amplify, { Auth } from "aws-amplify";
+import awsconfig from "./aws-exports";
+
+Amplify.configure(awsconfig);
+
 function App() {
   return (
     <div>
@@ -22,4 +29,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);

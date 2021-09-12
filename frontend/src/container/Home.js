@@ -62,14 +62,14 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "1rem",
     marginBottom: "2rem",
     marginLeft: "10%",
-    color: "balck",
+    color: "black",
   },
 }));
 
 function Home() {
   const classes = useStyles();
   return (
-    <React.Fragment>
+    <div>
       <CssBaseline />
       <div>
         <Box className={classes.root} width="100%">
@@ -118,7 +118,7 @@ function Home() {
           </Box>
         </Box>
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 

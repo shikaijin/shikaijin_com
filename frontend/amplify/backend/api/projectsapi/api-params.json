@@ -1,0 +1,42 @@
+{
+  "paths": [
+    {
+      "name": "/projects",
+      "lambdaFunction": "projectsfunction",
+      "privacy": {
+        "private": true,
+        "auth": [
+          "/POST",
+          "/GET",
+          "/PUT",
+          "/PATCH",
+          "/DELETE"
+        ]
+      },
+      "policyResourceName": "/projects"
+    }
+  ],
+  "resourceName": "projectsapi",
+  "apiName": "projectsapi",
+  "functionArns": [
+    {
+      "lambdaFunction": "projectsfunction"
+    }
+  ],
+  "privacy": {
+    "auth": 1,
+    "unauth": 0,
+    "authRoleName": "amplify-amplify3dda9fad4c704-staging-24441-authRole",
+    "unAuthRoleName": "amplify-amplify3dda9fad4c704-staging-24441-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "projectsfunction",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

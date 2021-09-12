@@ -9,7 +9,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import Box from "@material-ui/core/Box";
 import { Link } from "react-router-dom";
-
+import { AmplifySignOut } from "@aws-amplify/ui-react";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -47,7 +47,7 @@ export default function ButtonAppBar() {
             display="flex"
             flexWrap="wrap"
             alignContent="flex-start"
-            sx={{ maxWidth: 400 }}
+            sx={{ maxWidth: 600 }}
           >
             <Box p={2}>
               <Button color="inherit" component={Link} to="/">
@@ -74,6 +74,9 @@ export default function ButtonAppBar() {
               >
                 <GitHubIcon />
               </IconButton>
+            </Box>
+            <Box>
+              <AmplifySignOut />
             </Box>
           </Box>
         </Toolbar>
