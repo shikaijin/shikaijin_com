@@ -6,19 +6,21 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import logo from "../static/images/logo.png";
 import layer from "../static/images/layer.png";
 import SendIcon from "@material-ui/icons/Send";
-import { Link } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
 import cssa from "../static/images/cssa.jpg";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import Fab from "@material-ui/core/Fab";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
+    marginTop: "4rem",
     marginBottom: "2rem",
     backgroundImage: `url(${layer})`,
     backgroundSize: "100% 100%",
@@ -44,15 +46,11 @@ const useStyles = makeStyles((theme) => ({
     marginBlock: "3rem",
     marginLeft: "3rem",
   },
-  uwButton: {
-    marginLeft: "5px",
-  },
-
   image: {
     width: 700,
     minWidth: "40%",
     maxWidth: "100%",
-    height: "85vh",
+    height: "90vh",
     backgroundImage: `url(${logo})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -64,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   cardGrid: {
+    marginTop: "5rem",
     paddingTop: "2rem",
     paddingBottom: "1rem",
   },
@@ -112,13 +111,16 @@ function Home() {
             </Box>
             {/* End intro unit */}
             {/* Shortcuts unit */}
-            <Box className={classes.shortcuts}>
-              <Typography variant="subtitle1">
-                Related Page:
-                <Button color="inherit" component={Link} to="/projects">
-                  Projects
-                </Button>
-              </Typography>
+            <Box>
+              <Fab
+                variant="extended"
+                size="medium"
+                href="#Projects"
+                className={classes.shortcuts}
+              >
+                Scroll down
+                <ArrowDownwardIcon />
+              </Fab>
             </Box>
             {/* End shortcuts unit */}
           </Box>
@@ -126,41 +128,42 @@ function Home() {
           <Box className={classes.image} />
           {/* End logo unit */}
           {/* Projects unit */}
-          <Container className={classes.cardGrid} maxWidth="md">
-            <Box className={classes.subtitle}>
-              <Typography variant="h4">Projects Participated</Typography>
-            </Box>
-            <Grid container spacing={4}>
-              <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={cssa}
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      UWCSSA Web
-                    </Typography>
-                    <Typography>
-                      A web built for UWCSSA, University of Windsor students and
-                      the local community.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      size="small"
-                      color="primary"
-                      href="https://uwcssa.ca/"
-                    >
-                      View
-                    </Button>
-                  </CardActions>
-                </Card>
+          <section id="Projects">
+            <Container className={classes.cardGrid} maxWidth="md">
+              <Box className={classes.subtitle}>
+                <Typography variant="h4">Projects Participated</Typography>
+              </Box>
+              <Grid container spacing={4}>
+                <Grid item xs={12} sm={6} md={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={cssa}
+                      title="Image title"
+                    />
+                    <CardContent className={classes.cardContent}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        UWCSSA Web
+                      </Typography>
+                      <Typography>
+                        A web built for UWCSSA, University of Windsor students
+                        and the local community.
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button
+                        size="small"
+                        color="primary"
+                        href="https://uwcssa.ca/"
+                      >
+                        View
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
               </Grid>
-            </Grid>
-          </Container>
-
+            </Container>
+          </section>
           {/* End projects unit */}
         </Box>
       </div>
