@@ -24,9 +24,8 @@ function App() {
             <Route path="/cv" exact component={CV} />
             <Route path="/skills" exact component={Skills} />
             <Route path="/projects" exact component={Projects} />
-            <Route exact path="/blog">
-              <Blog />
-            </Route>
+            <Route path="/blog" exact component={Blog} />
+            <Route path="/blog/signin" exact component={Blog} />
           </Switch>
           <Footer />
         </Router>

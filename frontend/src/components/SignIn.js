@@ -1,5 +1,13 @@
 import Auth from "@aws-amplify/auth";
-import { Box, Button, TextField } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  TextField,
+  Grid,
+  FormControlLabel,
+  Checkbox,
+  Link,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
@@ -35,16 +43,6 @@ const SignIn = ({ onSignIn }) => {
   };
   const classes = useStyles();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get("username"),
-      password: data.get("password"),
-    });
-  };
-
   return (
     <div className="signin">
       <Box
@@ -58,31 +56,30 @@ const SignIn = ({ onSignIn }) => {
         <Box sx={{ m: 1 }}>
           <LockIcon color="primary" />
         </Box>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
-            required
             fullWidth
             id="username"
             label="Username"
-            name="username"
-            autoComplete="username"
-            autoFocus
-            onClick={(e) => setUsername(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
             margin="normal"
-            required
             fullWidth
-            name="password"
+            id="password"
             label="Password"
             type="password"
-            id="password"
-            autoComplete="current-password"
-            onClick={(e) => setPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
-
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
           <Button
+            fullWidth
             id="signInButton"
             color="primary"
             onClick={signIn}
@@ -90,6 +87,13 @@ const SignIn = ({ onSignIn }) => {
           >
             Sign In
           </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link to="/blog/signup" variant="body2">
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
       </Box>
     </div>

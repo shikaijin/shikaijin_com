@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import original from "../static/images/original.gif";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignIn from "../components/SignIn";
+import BlogsList from "../components/BlogList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   text: {
     textAlign: "center",
     margin: "0 2rem 2rem",
-    padding: "0 10rem",
+    padding: "0 2rem",
   },
 
   ColorButton: {
@@ -47,19 +48,21 @@ const useStyles = makeStyles((theme) => ({
 function Blog() {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  useEffect(() => {
-    AssessLoggedInState();
-  }, []); // LF
-
-  const AssessLoggedInState = () => {
+  const assessLoggedInState = () => {
     Auth.currentAuthenticatedUser()
-      .then(() => {
+      .then((sess) => {
+        console.log("logged in");
         setLoggedIn(true);
       })
       .catch(() => {
+        console.log("not logged in");
         setLoggedIn(false);
       });
   };
+
+  useEffect(() => {
+    assessLoggedInState();
+  }, []); // LF
 
   const signOut = async () => {
     try {
@@ -69,51 +72,44 @@ function Blog() {
       console.log("error signing out", error);
     }
   };
+
   const onSignIn = () => {
     setLoggedIn(true);
   };
-  const classes = useStyles();
 
+  const classes = useStyles();
   return (
     <Router>
       <div className={classes.root}>
-        <header>
-          <Box className={classes.subHeader}>
-            <Typography variant="h3" gutterBottom>
-              <b>Blog</b>
+        <header className={classes.subHeader}>
+          <Typography variant="h3" gutterBottom>
+            <b>Blog</b>
+          </Typography>
+          <Box className={classes.text}>
+            <Typography variant="subtitle1" gutterBottom>
+              Aliquip ullamco do laborum labore minim quis non proident.
             </Typography>
-            <Box className={classes.text}>
-              <Typography variant="subtitle1" gutterBottom>
-                Aliquip ullamco do laborum labore minim quis non proident.
-                Exercitation culpa officia reprehenderit exercitation cillum ex
-                pariatur velit excepteur ad. Nulla ipsum ex in sunt est
-                voluptate amet. Officia ipsum nostrud non deserunt ad ad
-                occaecat elit amet. Deserunt in veniam ea commodo officia
-                deserunt occaecat aliquip minim dolore laboris officia. Dolor id
-                velit incididunt aliqua qui reprehenderit sunt fugiat veniam
-                veniam.
-              </Typography>
-            </Box>
-
-            {loggedIn ? (
-              <Button
-                size="small"
-                className={classes.ColorButton}
-                onClick={signOut}
-              >
-                Sign out
-              </Button>
-            ) : (
-              <Link to="/blog/signin" style={{ textDecoration: "none" }}>
-                <Button size="small" className={classes.ColorButton}>
-                  Sign In
-                </Button>
-              </Link>
-            )}
           </Box>
+          {loggedIn ? (
+            <Button
+              size="small"
+              className={classes.ColorButton}
+              onClick={signOut}
+            >
+              Sign out
+            </Button>
+          ) : (
+            <Link to="/blog/signin" style={{ textDecoration: "none" }}>
+              <Button size="small" className={classes.ColorButton}>
+                Sign In
+              </Button>
+            </Link>
+          )}
         </header>
         <Switch>
-          <Route exact path="/blog" />
+          <Route exact path="/blog">
+            <BlogsList />
+          </Route>
           <Route path="/blog/signin">
             <SignIn onSignIn={onSignIn}></SignIn>
           </Route>

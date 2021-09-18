@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
   subtitle: {
     textAlign: "center",
-    padding: "0 10rem 1rem",
+    padding: "0 3rem 1rem",
   },
   skills: {
     flexGrow: 1,
@@ -113,11 +113,7 @@ function Skills() {
             <Typography variant="subtitle1" gutterBottoms>
               Ut tempor est esse eiusmod. Enim non duis quis dolor eiusmod duis
               tempor aliqua. Nisi est sint nisi consequat enim nostrud id et
-              aliqua. Tempor minim velit laborum eu in sint elit veniam dolor
-              est fugiat. Irure duis aliquip aute sit nulla dolore cupidatat
-              nulla culpa et est id tempor. Non enim exercitation pariatur
-              eiusmod. Laborum culpa ullamco id sunt consectetur amet cillum
-              magna.
+              aliqua.
             </Typography>
           </Box>
         </Box>
