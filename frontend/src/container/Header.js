@@ -1,54 +1,202 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import AppBarCollapse from "../components/AppBarCollapse";
-import Avatar from "@material-ui/core/Avatar";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  makeStyles,
+  Button,
+  IconButton,
+  Drawer,
+  Link,
+  MenuItem,
+} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import React, { useState, useEffect } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import GitHubIcon from "@material-ui/icons/GitHub";
 
-const styles = {
-  root: {
-    flexGrow: 1,
+const headersData = [
+  {
+    label: "Home",
+    href: "/",
   },
-  grow: {
-    flexGrow: 1,
+  {
+    label: "CV",
+    href: "/cv",
+  },
+  {
+    label: "Skills",
+    href: "/skills",
+  },
+  {
+    label: "Projects",
+    href: "/projects",
+  },
+  {
+    label: "Blog",
+    href: "/blog",
+  },
+];
+
+const useStyles = makeStyles(() => ({
+  header: {
+    paddingRight: "4rem",
+    paddingLeft: "7rem",
+    "@media (max-width: 900px)": {
+      paddingLeft: 0,
+    },
+  },
+  logo: {
+    fontWeight: 600,
+    textAlign: "left",
+  },
+  icon: {
+    marginLeft: "2rem",
   },
   menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
+    fontWeight: 700,
+    marginLeft: "2rem",
   },
-  navigation: {},
-  avatarBox: {
-    marginRight: "1rem",
+  toolbar: {
+    display: "flex",
+    justifyContent: "space-between",
   },
-  appTitle: {
-    flexGrow: 1,
+  drawerContainer: {
+    padding: "1.25rem 1.875rem",
   },
-};
+}));
 
-function ButtonAppBar(props) {
-  const { classes } = props;
-  return (
-    <AppBar position="fixed" className={classes.navigation}>
-      <Toolbar>
-        <Avatar
-          aria-label="Menu"
-          className={classes.avatarBox}
-          src="https://lh3.googleusercontent.com/-_eyJw8vk-PM/WWOblnoZNtI/AAAAAAAABII/M7bToaNOISM724zPXXP_Z8_44rSincERwCEwYBhgLKtQDABHVOhwW8ONAWuJ0fReUL8HdigCofn45rP38onzYTrtt8NKnjcZjFqs4wD-yA6rLYnbGxpbi9nkB9zMLVMkEDdI7sl-DYeQ0sjwAzUNQjAxAlr8gUJ-ijblGo4QllrwSTtFavMIDF14tSVoHvSK6zoM_QwL--7jxrqAWiVWg7JSfKi06UU8o8nIYPDB7AFIcComlkMOqQL1KbhScd67mgf_ix0u7rw_syYPotesa0OAHoB7VqIoWHh3bKzO4B-YyqHp6ZK9QsnMwGez1mjl9k3roR_D658JRQYz0tZfBoHLwc9WW0fs_6OLklaba_0MCBaahPBWmGa5FcO2RfDGf1e-1I91QXhkwZnF0rme7JGsVioc6R9VWH5xhf85aXUKJ-z7Pcv2CIHw7FkjHWXmduvqKTvd49yq3zWaLXoq9vQ9vB2WOGUTuDl4W97y7_ZdQxYDAmZHsiSV2dztnL3XbEig5zcsjqdxdkSfdTCRIRrsIp6DGmThKYSoGJMLbbyC40sADVOHiImtJLYpBOSEBUFuwjCo5qX1SZZOiHpouqh_-V_7XV0hEToU438PnTSoQFNHKoV3w4gIm5E07avpKmtVfKXAjsrvkZxmGXoOlRf305O5kMOSd-okG/w140-h140-p/618db15a13dc5acec5aba7d62b5cb532.jpg"
-        />
+export default function Header() {
+  const { header, logo, icon, menuButton, toolbar, drawerContainer } =
+    useStyles();
 
-        <Typography variant="h6" color="inherit" className={classes.appTitle}>
-          My Portfolio
-        </Typography>
-        <AppBarCollapse />
+  const [state, setState] = useState({
+    mobileView: false,
+    drawerOpen: false,
+  });
+
+  const { mobileView, drawerOpen } = state;
+
+  useEffect(() => {
+    const setResponsiveness = () => {
+      return window.innerWidth < 900
+        ? setState((prevState) => ({ ...prevState, mobileView: true }))
+        : setState((prevState) => ({ ...prevState, mobileView: false }));
+    };
+
+    setResponsiveness();
+
+    window.addEventListener("resize", () => setResponsiveness());
+
+    return () => {
+      window.removeEventListener("resize", () => setResponsiveness());
+    };
+  }, []);
+
+  const displayDesktop = () => {
+    return (
+      <Toolbar className={toolbar}>
+        {myLogo}
+        <div>{getMenuButtons()}</div>
+        {icons}
       </Toolbar>
-    </AppBar>
+    );
+  };
+
+  const displayMobile = () => {
+    const handleDrawerOpen = () =>
+      setState((prevState) => ({ ...prevState, drawerOpen: true }));
+    const handleDrawerClose = () =>
+      setState((prevState) => ({ ...prevState, drawerOpen: false }));
+
+    return (
+      <Toolbar>
+        <IconButton
+          {...{
+            edge: "start",
+            color: "inherit",
+            "aria-label": "menu",
+            "aria-haspopup": "true",
+            onClick: handleDrawerOpen,
+          }}
+        >
+          <MenuIcon />
+        </IconButton>
+
+        <Drawer
+          {...{
+            anchor: "left",
+            open: drawerOpen,
+            onClose: handleDrawerClose,
+          }}
+        >
+          <div className={drawerContainer}>{getDrawerChoices()}</div>
+        </Drawer>
+
+        <div>{myLogo}</div>
+        <div>{icons}</div>
+      </Toolbar>
+    );
+  };
+
+  const getDrawerChoices = () => {
+    return headersData.map(({ label, href }) => {
+      return (
+        <Link
+          {...{
+            component: RouterLink,
+            to: href,
+            color: "inherit",
+            style: { textDecoration: "none" },
+            key: label,
+          }}
+        >
+          <MenuItem>{label}</MenuItem>
+        </Link>
+      );
+    });
+  };
+
+  const myLogo = (
+    <Typography variant="h6" component="h3" className={logo}>
+      Shikai Jin
+    </Typography>
+  );
+
+  const icons = (
+    <IconButton
+      edge="start"
+      color="inherit"
+      aria-label="github"
+      href="https://github.com/shikaijin"
+      className={icon}
+    >
+      <GitHubIcon />
+    </IconButton>
+  );
+
+  const getMenuButtons = () => {
+    return headersData.map(({ label, href }) => {
+      return (
+        <Button
+          {...{
+            key: label,
+            color: "inherit",
+            to: href,
+            component: RouterLink,
+            className: menuButton,
+          }}
+        >
+          {label}
+        </Button>
+      );
+    });
+  };
+
+  return (
+    <header>
+      <AppBar className={header}>
+        {mobileView ? displayMobile() : displayDesktop()}
+      </AppBar>
+    </header>
   );
 }
-
-ButtonAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(ButtonAppBar);

@@ -13,13 +13,17 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
+    alignItems: "center",
     justifyContent: "center",
-    marginTop: "2rem",
     marginBottom: "2rem",
+    marginTop: "3rem",
+    backgroundColor: "#FFFF",
   },
   title: {
     minWidth: "40%",
     maxWidth: "100%",
+    paddingTop: "1rem",
+    paddingBottom: "1rem",
     backgroundImage: `url(${projectBanner})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -28,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
     marginTop: "5rem",
     marginBottom: "2rem",
-    marginLeft: "2rem",
     textAlign: "center",
   },
   subtitle: {
@@ -47,9 +50,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
   },
   cardMedia: {
-    height: 0,
     paddingTop: "56.25%", // 16:9
-    backgroundSize: "70% 100%",
+    backgroundSize: "contain",
   },
   cardContent: {
     flexGrow: 1,
@@ -63,7 +65,9 @@ function Projects() {
       <Box className={classes.root}>
         <Box className={classes.title} width="100%">
           <Box className={classes.text}>
-            <Typography variant="h3">Projects</Typography>
+            <Typography variant="h3">
+              <b>Projects</b>
+            </Typography>
           </Box>
         </Box>
         <Container className={classes.cardGrid} maxWidth="md">

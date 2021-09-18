@@ -10,13 +10,17 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
+    alignItems: "center",
     justifyContent: "center",
-    marginTop: "2rem",
     marginBottom: "2rem",
+    marginTop: "3rem",
+    backgroundColor: "#FFFF",
   },
   title: {
     minWidth: "40%",
     maxWidth: "100%",
+    paddingTop: "1rem",
+    paddingBottom: "1rem",
     backgroundImage: `url(${cvBanner})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -25,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
     marginTop: "5rem",
     marginBottom: "2rem",
-    marginLeft: "2rem",
     textAlign: "center",
   },
   content: {
@@ -51,17 +54,19 @@ const useStyles = makeStyles((theme) => ({
 function CV() {
   const classes = useStyles();
   return (
-    <div>
+    <div id="cv">
       <Box className={classes.root}>
         <Box className={classes.title} width="100%">
           <Box className={classes.text}>
-            <Typography variant="h3">Curriculum Vitae</Typography>
+            <Typography variant="h3">
+              <b>Curriculum Vitae</b>
+            </Typography>
           </Box>
         </Box>
         <Box className={classes.content} width="100%">
           <Box className={classes.subtitle}>
             <Typography variant="h5" color="primary">
-              Education
+              <b>Education</b>
             </Typography>
           </Box>
           <Box className={classes.bodyBox}>
@@ -88,7 +93,7 @@ function CV() {
           <Divider />
           <Box className={classes.subtitle}>
             <Typography variant="h5" color="primary">
-              Scholarships and Awards
+              <b>Scholarships and Awards</b>
             </Typography>
             <Box className={classes.bodyBox}>
               <Box m={2} variant="subtitle1">
