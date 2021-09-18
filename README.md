@@ -50,6 +50,8 @@
   <li><b>CV.js</b> - </li>
   <li><b>Skills.js</b> - </li>
   <li><b>Projects.js</b> -</li>
+  <li><b>Blog.js</b> -</li>
+  <li><b>SignIn.js</b> -</li>
 </ul>
 
 
@@ -76,6 +78,6 @@
 
 <!-- CREDITS -->
 <h2 id="credits"> :scroll: Credits</h2>
-
+<a href="https://docs.amplify.aws/lib/q/platform/js/">Amplify Libraries</a>
 
 
