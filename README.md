@@ -14,7 +14,7 @@
     <li><a href="#framework"> ➤ Framework</a></li>
     <li><a href="#project-files-description"> ➤ Project Files Description</a></li>
     <li><a href="#getting-started"> ➤ Getting Started</a></li>
-    <li><a href="#credits"> ➤ Credits</a></li>
+    <li><a href="#reference"> ➤ Reference</a></li>
   </ol>
 </details>
 
@@ -76,8 +76,8 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<!-- CREDITS -->
-<h2 id="credits"> :scroll: Credits</h2>
+<!-- REFERENCE -->
+<h2 id="reference"> :scroll: Reference</h2>
 <a href="https://docs.amplify.aws/lib/q/platform/js/">Amplify Libraries</a>
 
 
