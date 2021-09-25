@@ -6,7 +6,7 @@ import CV from "./container/CV";
 import Header from "./container/Header";
 import Skills from "./container/Skills";
 import Projects from "./container/Projects";
-import Blog from "./container/Blog";
+import Blogs from "./container/Blogs";
 import Footer from "./container/Footer";
 import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
@@ -24,8 +24,9 @@ function App() {
             <Route path="/cv" exact component={CV} />
             <Route path="/skills" exact component={Skills} />
             <Route path="/projects" exact component={Projects} />
-            <Route path="/blog" exact component={Blog} />
-            <Route path="/blog/signin" exact component={Blog} />
+            <Route path="/blogs" exact component={Blogs} />
+            <Route path="/blogs/signin" exact component={Blogs} />
+            <Route path="/blogs/signup" exact component={Blogs} />
           </Switch>
           <Footer />
         </Router>

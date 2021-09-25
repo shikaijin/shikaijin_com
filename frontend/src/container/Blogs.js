@@ -3,35 +3,41 @@ import { makeStyles } from "@material-ui/styles";
 import { Box, Button, Typography } from "@material-ui/core";
 import Auth from "@aws-amplify/auth";
 import { Link } from "react-router-dom";
-import original from "../static/images/original.gif";
+import sky from "../static/images/sky.jpg";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignIn from "../components/SignIn";
 import BlogsList from "../components/BlogList";
+import SignUpForm from "../components/SignUpForm";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginBottom: "2rem",
+    marginBottom: "3rem",
     marginTop: "3rem",
     textAlign: "center",
   },
   subHeader: {
-    backgroundColor: "#212F3D",
+    minWidth: "40%",
+    maxWidth: "100%",
     minHeight: "5vh",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     color: "white",
-    paddingTop: "3rem",
-    paddingBottom: "2rem",
-    backgroundImage: `url(${original})`,
+    paddingTop: "1rem",
+    paddingBottom: "1.5rem",
+    backgroundImage: `url(${sky})`,
     backgroundSize: "auto",
-    backgroundBlendMode: "lighten",
+    backgroundPosition: "right",
   },
-  text: {
+  title: {
+    fontWeight: 700,
+    marginTop: "3rem",
     textAlign: "center",
-    margin: "0 2rem 2rem",
-    padding: "0 2rem",
+  },
+  subtitle: {
+    textAlign: "center",
+    padding: "0 3rem 1rem",
   },
 
   ColorButton: {
@@ -45,12 +51,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Blog() {
+function Blogs() {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const assessLoggedInState = () => {
+  useEffect(() => {
+    AssessLoggedInState();
+  }, []); // LF
+
+  const AssessLoggedInState = () => {
     Auth.currentAuthenticatedUser()
-      .then((sess) => {
+      .then(() => {
         console.log("logged in");
         setLoggedIn(true);
       })
@@ -59,10 +69,6 @@ function Blog() {
         setLoggedIn(false);
       });
   };
-
-  useEffect(() => {
-    assessLoggedInState();
-  }, []); // LF
 
   const signOut = async () => {
     try {
@@ -82,12 +88,14 @@ function Blog() {
     <Router>
       <div className={classes.root}>
         <header className={classes.subHeader}>
-          <Typography variant="h3" gutterBottom>
-            <b>Blog</b>
-          </Typography>
-          <Box className={classes.text}>
+          <Box className={classes.title}>
+            <Typography variant="h3" gutterBottom>
+              <b>Blogs</b>
+            </Typography>
+          </Box>
+          <Box className={classes.subtitle}>
             <Typography variant="subtitle1" gutterBottom>
-              Aliquip ullamco do laborum labore minim quis non proident.
+              Browse our technical blogs.
             </Typography>
           </Box>
           {loggedIn ? (
@@ -99,7 +107,7 @@ function Blog() {
               Sign out
             </Button>
           ) : (
-            <Link to="/blog/signin" style={{ textDecoration: "none" }}>
+            <Link to="/blogs/signin" style={{ textDecoration: "none" }}>
               <Button size="small" className={classes.ColorButton}>
                 Sign In
               </Button>
@@ -107,11 +115,14 @@ function Blog() {
           )}
         </header>
         <Switch>
-          <Route exact path="/blog">
+          <Route exact path="/blogs">
             <BlogsList />
           </Route>
-          <Route path="/blog/signin">
+          <Route path="/blogs/signin">
             <SignIn onSignIn={onSignIn}></SignIn>
+          </Route>
+          <Route path="/blogs/signup">
+            <SignUpForm></SignUpForm>
           </Route>
         </Switch>
       </div>
@@ -119,4 +130,4 @@ function Blog() {
   );
 }
 
-export default Blog;
+export default Blogs;

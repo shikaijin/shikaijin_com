@@ -32,8 +32,8 @@ const headersData = [
     href: "/projects",
   },
   {
-    label: "Blog",
-    href: "/blog",
+    label: "Blogs",
+    href: "/blogs",
   },
 ];
 

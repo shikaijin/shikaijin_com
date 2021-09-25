@@ -7,6 +7,9 @@ import {
   FormControlLabel,
   Checkbox,
   Link,
+  Typography,
+  Container,
+  CssBaseline,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import React, { useState } from "react";
@@ -22,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     height: 48,
     padding: "0 30px",
-    marginTop: "2rem",
-    marginBottom: "3rem",
+    marginTop: "1rem",
+    marginBottom: "2rem",
   },
 }));
 
@@ -34,68 +37,78 @@ const SignIn = ({ onSignIn }) => {
 
   const signIn = async () => {
     try {
+      // eslint-disable-next-line
       const user = await Auth.signIn(username, password);
-      history.push("/blog");
+      history.push("/blogs");
       onSignIn();
     } catch (error) {
-      console.log("Oops, there was a login error", error);
+      console.log("error signing in", error);
     }
   };
+
   const classes = useStyles();
 
   return (
     <div className="signin">
-      <Box
-        sx={{
-          marginTop: "3rem",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Box sx={{ m: 1 }}>
-          <LockIcon color="primary" />
-        </Box>
-        <Box component="form" noValidate sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            fullWidth
-            id="username"
-            label="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <TextField
-            margin="normal"
-            fullWidth
-            id="password"
-            label="Password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
-          <Button
-            fullWidth
-            id="signInButton"
-            color="primary"
-            onClick={signIn}
-            className={classes.ColorButton}
-          >
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link to="/blog/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: "1rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Box sx={{ m: 1 }}>
+            <LockIcon color="primary" />
+          </Box>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <Box component="form" noValidate sx={{ mt: 1 }}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              id="username"
+              label="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              id="password"
+              label="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              fullWidth
+              id="signInButton"
+              color="primary"
+              onClick={signIn}
+              className={classes.ColorButton}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="/blogs/signup" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
             </Grid>
-          </Grid>
+          </Box>
         </Box>
-      </Box>
+      </Container>
     </div>
   );
 };

@@ -35,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontWeight: 700,
-    marginTop: "5rem",
-    marginBottom: "2rem",
+    marginTop: "3rem",
+    marginBottom: "1rem",
     textAlign: "center",
   },
   subtitle: {
