@@ -39,10 +39,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "1rem",
     textAlign: "center",
   },
-  subtitle: {
-    textAlign: "center",
-    padding: "0 3rem 1rem",
-  },
+
   skills: {
     flexGrow: 1,
     marginBottom: "3rem",
@@ -107,13 +104,6 @@ function Skills() {
           <Box className={classes.title}>
             <Typography variant="h3" gutterBottom>
               <b>Skills</b>
-            </Typography>
-          </Box>
-          <Box className={classes.subtitle}>
-            <Typography variant="subtitle1" gutterBottoms>
-              Ut tempor est esse eiusmod. Enim non duis quis dolor eiusmod duis
-              tempor aliqua. Nisi est sint nisi consequat enim nostrud id et
-              aliqua.
             </Typography>
           </Box>
         </Box>

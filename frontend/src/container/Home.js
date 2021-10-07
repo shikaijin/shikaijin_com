@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Typography, Container } from "@material-ui/core";
+import { Button, Typography, Container, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { Box } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -17,7 +17,6 @@ import Fab from "@material-ui/core/Fab";
 const useStyles = makeStyles((theme) => ({
   root: {
     justifyContent: "center",
-    paddingBottom: "1rem",
     marginTop: "3rem",
     backgroundColor: "#FFFFFF",
   },
@@ -25,8 +24,8 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "40%",
     maxWidth: "100%",
     textAlign: "left",
-    paddingBottom: "10rem",
-    marginBottom: "7rem",
+    paddingBottom: "auto",
+    marginBottom: "5rem",
     backgroundImage: `url(${hero3})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -68,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
   cardGrid: {
     paddingTop: "2rem",
     paddingBottom: "2rem",
+    marginBottom: "2rem",
   },
   subtitle: {
     marginBottom: "3rem",
@@ -143,9 +143,7 @@ function Home() {
           <section id="About">
             <Container className={classes.cardGrid} maxWidth="md">
               <Box className={classes.subtitle}>
-                <Typography variant="h4" gutterBottom>
-                  About
-                </Typography>
+                <Typography variant="h4">About</Typography>
               </Box>
               <Typography variant="body1">
                 Incididunt eiusmod irure mollit minim laboris. Proident sint
@@ -181,12 +179,13 @@ function Home() {
             </Container>
           </section>
           {/* End about unit */}
+          <Divider variant="middle" />
           {/* Projects unit */}
           <section id="Projects">
             <Container className={classes.cardGrid} maxWidth="md">
               <Box className={classes.subtitle}>
                 <Typography variant="h4" gutterBottom>
-                  Projects Participated
+                  Recent Projects Involved
                 </Typography>
               </Box>
               <Grid container spacing={4}>
@@ -199,11 +198,14 @@ function Home() {
                     />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2">
-                        UWCSSA Web
+                        UWCSSA Web Development
                       </Typography>
                       <Typography>
-                        A web built for UWCSSA, University of Windsor students
-                        and the local community.
+                        The UWCSSA project is a web development project designed
+                        to provide an efficient working platform for the
+                        University of Windsor Chinese Students and Scholars
+                        Association and a student forum for University of
+                        Windsor students.
                       </Typography>
                     </CardContent>
                     <CardActions>

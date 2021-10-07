@@ -1,53 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/styles";
-import { Box, Button, Typography } from "@material-ui/core";
+import { Box, Button, Typography, Container } from "@material-ui/core";
 import Auth from "@aws-amplify/auth";
 import { Link } from "react-router-dom";
-import sky from "../static/images/sky.jpg";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignIn from "../components/SignIn";
-import BlogsList from "../components/BlogList";
 import SignUpForm from "../components/SignUpForm";
+import BlogHome from "../components/BlogHome";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginBottom: "3rem",
     marginTop: "3rem",
-    textAlign: "center",
   },
   subHeader: {
-    minWidth: "40%",
-    maxWidth: "100%",
-    minHeight: "5vh",
     display: "flex",
-    flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
-    color: "white",
-    paddingTop: "1rem",
-    paddingBottom: "1.5rem",
-    backgroundImage: `url(${sky})`,
-    backgroundSize: "auto",
-    backgroundPosition: "right",
+    justifyContent: "space-between",
+    borderBottom: " 1px solid silver",
+    marginBottom: "3em",
+    overflowX: "auto",
   },
   title: {
     fontWeight: 700,
     marginTop: "3rem",
     textAlign: "center",
   },
-  subtitle: {
-    textAlign: "center",
-    padding: "0 3rem 1rem",
-  },
 
   ColorButton: {
-    background: "linear-gradient(45deg, #12100e 30%, #2b4162 90%)",
-    border: 0,
-    borderRadius: 3,
-    boxShadow: "0 3px 5px 2px rgba(73, 73, 69, 0.88)",
-    color: "white",
-    height: 48,
-    padding: "0 20px",
+    marginTop: "2rem",
   },
 }));
 
@@ -86,46 +67,64 @@ function Blogs() {
   const classes = useStyles();
   return (
     <Router>
-      <div className={classes.root}>
-        <header className={classes.subHeader}>
-          <Box className={classes.title}>
-            <Typography variant="h3" gutterBottom>
-              <b>Blogs</b>
-            </Typography>
-          </Box>
-          <Box className={classes.subtitle}>
-            <Typography variant="subtitle1" gutterBottom>
-              Browse our technical blogs.
-            </Typography>
-          </Box>
-          {loggedIn ? (
+      <Container maxWidth="lg">
+        <div className={classes.root}>
+          <Box className={classes.subHeader}>
             <Button
               size="small"
+              color="primary"
               className={classes.ColorButton}
-              onClick={signOut}
+              disabled
             >
-              Sign out
+              Subscribe
             </Button>
-          ) : (
-            <Link to="/blogs/signin" style={{ textDecoration: "none" }}>
-              <Button size="small" className={classes.ColorButton}>
-                Sign In
+            <Box className={classes.title}>
+              <Typography
+                component="h2"
+                variant="h5"
+                color="inherit"
+                align="center"
+              >
+                <b>Blogs</b>
+              </Typography>
+            </Box>
+            {loggedIn ? (
+              <Button
+                variant="outlined"
+                size="small"
+                color="primary"
+                className={classes.ColorButton}
+                onClick={signOut}
+              >
+                Sign out
               </Button>
-            </Link>
-          )}
-        </header>
-        <Switch>
-          <Route exact path="/blogs">
-            <BlogsList />
-          </Route>
-          <Route path="/blogs/signin">
-            <SignIn onSignIn={onSignIn}></SignIn>
-          </Route>
-          <Route path="/blogs/signup">
-            <SignUpForm></SignUpForm>
-          </Route>
-        </Switch>
-      </div>
+            ) : (
+              <Link to="/blogs/signin" style={{ textDecoration: "none" }}>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  color="primary"
+                  className={classes.ColorButton}
+                >
+                  Sign In
+                </Button>
+              </Link>
+            )}
+          </Box>
+
+          <Switch>
+            <Route exact path="/blogs">
+              <BlogHome />
+            </Route>
+            <Route path="/blogs/signin">
+              <SignIn onSignIn={onSignIn}></SignIn>
+            </Route>
+            <Route path="/blogs/signup">
+              <SignUpForm></SignUpForm>
+            </Route>
+          </Switch>
+        </div>
+      </Container>
     </Router>
   );
 }

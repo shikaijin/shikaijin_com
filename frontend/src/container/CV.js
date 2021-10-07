@@ -125,6 +125,7 @@ function CV() {
                   variant="contained"
                   color="primary"
                   size="medium"
+                  disabled
                   endIcon={<GetAppIcon />}
                 >
                   Download CV
@@ -136,6 +137,7 @@ function CV() {
                   color="primary"
                   size="medium"
                   endIcon={<LinkedInIcon />}
+                  href="https://www.linkedin.com/in/shikai-zoe-jin-492a0b136/"
                 >
                   LinkedIn
                 </Button>
