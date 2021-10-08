@@ -8,7 +8,6 @@ import {
   Divider,
 } from "@material-ui/core";
 import skillBanner from "../static/images/skillBanner.png";
-import Rating from "@material-ui/lab/Rating";
 
 const grey = "#f5f5f5";
 
@@ -132,7 +131,6 @@ function Skills() {
                   >
                     R
                   </Typography>
-                  <Rating value={4} readOnly />
                 </Box>
                 <NumberCircularProgress value={80} />
               </Box>
@@ -145,7 +143,6 @@ function Skills() {
                   >
                     SQL
                   </Typography>
-                  <Rating value={4} readOnly />
                 </Box>
                 <NumberCircularProgress value={75} />
               </Box>
@@ -158,7 +155,6 @@ function Skills() {
                   >
                     Python
                   </Typography>
-                  <Rating value={3.5} precision={0.5} readOnly />
                 </Box>
                 <NumberCircularProgress value={70} />
               </Box>
@@ -187,7 +183,6 @@ function Skills() {
                   >
                     HTML
                   </Typography>
-                  <Rating value={4} readOnly />
                 </Box>
                 <NumberCircularProgress value={75} />
               </Box>
@@ -200,9 +195,20 @@ function Skills() {
                   >
                     CSS
                   </Typography>
-                  <Rating value={3.5} precision={0.5} readOnly />
                 </Box>
                 <NumberCircularProgress value={70} />
+              </Box>
+              <Box className={classes.skillBox}>
+                <Box mb={1}>
+                  <Typography
+                    variant="h6"
+                    className={classes.paper}
+                    gutterBottom
+                  >
+                    RactJS
+                  </Typography>
+                </Box>
+                <NumberCircularProgress value={65} />
               </Box>
             </Box>
             <Divider />
@@ -229,7 +235,6 @@ function Skills() {
                   >
                     Figma
                   </Typography>
-                  <Rating value={4.5} precision={0.5} readOnly />
                 </Box>
                 <NumberCircularProgress value={90} />
               </Box>

@@ -72,9 +72,9 @@ function CV() {
           <Box className={classes.bodyBox}>
             <Box m={2} variant="subtitle1">
               <Typography>MMgt</Typography>
-              <Typography>Data Analytics</Typography>
-              <Typography>2021 - </Typography>
-              <Typography>University of Windsor. Windsor, ON.</Typography>
+              <Typography>
+                Data Analytics, 2021-2022. University of Windsor. Windsor, ON.
+              </Typography>
             </Box>
             <Box m={2} variant="subtitle1">
               <Typography>Certificate</Typography>

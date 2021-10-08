@@ -11,12 +11,14 @@ import {
   CardHeader,
   Button,
   Avatar,
+  IconButton,
 } from "@material-ui/core";
 import { blue } from "@material-ui/core/colors";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import ReactPlayer from "react-player";
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 const useStyles = makeStyles((theme) => ({
   markdown: {
@@ -54,13 +56,14 @@ export default function Main(props) {
                 </Avatar>
               }
               title="TDS Editors"
-              subheader="Mar 17 14, 2020"
+              subheader="03/17/2020 | Data Science"
             />
             <CardMedia className={classes.media}>
               <ReactPlayer
                 url="https://youtu.be/ffwYAqqGaj8"
                 width="100%"
                 height="100%"
+                controls
               />
             </CardMedia>
             <CardContent>
@@ -75,6 +78,9 @@ export default function Main(props) {
             </CardContent>
           </CardActionArea>
           <CardActions>
+            <IconButton id="like">
+              <ThumbUpIcon />
+            </IconButton>
             <Button size="small" color="primary" disabled>
               Read More
             </Button>

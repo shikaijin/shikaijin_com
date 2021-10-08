@@ -87,11 +87,13 @@ function Projects() {
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    UWCSSA Web
+                    UWCSSA Web Development
                   </Typography>
                   <Typography>
-                    A web built for UWCSSA, University of Windsor students and
-                    the local community.
+                    The UWCSSA project is a web development project designed to
+                    provide an efficient working platform for the University of
+                    Windsor Chinese Students and Scholars Association and a
+                    student forum for University of Windsor students.
                   </Typography>
                 </CardContent>
                 <CardActions>

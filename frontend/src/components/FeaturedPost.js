@@ -8,7 +8,6 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Hidden from "@material-ui/core/Hidden";
-import { Link } from "@material-ui/core";
 
 const useStyles = makeStyles({
   card: {
@@ -36,7 +35,7 @@ export default function FeaturedPost(props) {
                 {post.title}
               </Typography>
               <Typography variant="subtitle1" color="textSecondary">
-                {post.author} | {post.date}
+                {post.author} | {post.date} | {post.category}
               </Typography>
               <Typography variant="subtitle1" paragraph>
                 {post.description}

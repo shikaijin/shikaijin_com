@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "2rem",
     textAlign: "center",
     width: "100%",
-    alignItems: "center",
     "& > *": {
       margin: "0.25rem",
     },

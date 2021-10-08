@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 const mainFeaturedPost = {
   title: "October Edition: Data Science Meets Sports",
   author: "TDS Editors",
-  date: "Oct 1",
+  date: "10/01/2021",
   category: "Data Science",
   description:
     "Exploring the areas within sports that are the most receptive to data science solutions",
@@ -28,8 +28,9 @@ const mainFeaturedPost = {
 const featuredPosts = [
   {
     title: "Featured post",
-    date: "Nov 12",
+    date: "10/12/2020",
     author: "Username",
+    category: "Data Science",
     description:
       "This is a wider card with supporting text below as a natural lead-in to additional content.",
     image: "https://source.unsplash.com/random",
@@ -37,8 +38,9 @@ const featuredPosts = [
   },
   {
     title: "Post title",
-    date: "Nov 11",
+    date: "10/11/2020",
     author: "Username",
+    category: "Data Science",
     description:
       "This is a wider card with supporting text below as a natural lead-in to additional content.",
     image: "https://source.unsplash.com/random",
