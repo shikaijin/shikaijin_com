@@ -1,11 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box } from "@material-ui/core";
+import {
+  Box,
+  Card,
+  CardActionArea,
+  CardMedia,
+  CardContent,
+  CardActions,
+  CardHeader,
+  Button,
+  Avatar,
+} from "@material-ui/core";
+import { blue } from "@material-ui/core/colors";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
-import Markdown from "./Markdown";
 import ReactPlayer from "react-player";
 
 const useStyles = makeStyles((theme) => ({
@@ -15,6 +25,12 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     marginTop: "1rem",
+  },
+  media: {
+    height: 400,
+  },
+  avatar: {
+    backgroundColor: blue[500],
   },
 }));
 
@@ -28,8 +44,42 @@ export default function Main(props) {
         {title}
       </Typography>
       <Divider />
-      <Box className={classes.content}>
-        <ReactPlayer url="https://youtu.be/ffwYAqqGaj8" width="100%" />
+      <Box>
+        <Card className={classes.content}>
+          <CardActionArea>
+            <CardHeader
+              avatar={
+                <Avatar aria-label="recipe" className={classes.avatar}>
+                  TDS
+                </Avatar>
+              }
+              title="TDS Editors"
+              subheader="Mar 17 14, 2020"
+            />
+            <CardMedia className={classes.media}>
+              <ReactPlayer
+                url="https://youtu.be/ffwYAqqGaj8"
+                width="100%"
+                height="100%"
+              />
+            </CardMedia>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                Data Science @ The New York Times
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                The Data Science group at The New York Times develops and
+                deploys machine learning solutions to newsroom and business
+                problems.
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button size="small" color="primary" disabled>
+              Read More
+            </Button>
+          </CardActions>
+        </Card>
       </Box>
 
       {/* {posts.map((post) => (

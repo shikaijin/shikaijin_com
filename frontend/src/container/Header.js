@@ -1,18 +1,18 @@
 import {
   AppBar,
   Toolbar,
-  Typography,
   makeStyles,
   Button,
   IconButton,
   Drawer,
-  Link,
   MenuItem,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import { Link } from "react-router-dom";
+import logoIcon from "../static/images/logo.svg";
 
 const headersData = [
   {
@@ -157,9 +157,21 @@ export default function Header() {
   };
 
   const myLogo = (
-    <Typography variant="h6" component="h3" className={logo}>
+    <Button
+      size="large"
+      color="inherit"
+      className={logo}
+      component={Link}
+      to="/"
+      disableElevation
+      disableFocusRipple
+      disableRipple
+    >
+      <IconButton>
+        <img src={logoIcon} alt="my logo" height={25} width={25} />
+      </IconButton>
       Shikai Jin
-    </Typography>
+    </Button>
   );
 
   const icons = (

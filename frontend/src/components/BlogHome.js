@@ -6,7 +6,6 @@ import MainFeaturedPost from "./MainFeaturedPost";
 import FeaturedPost from "./FeaturedPost";
 import Main from "./Main";
 import Sidebar from "./Sidebar";
-import post1 from "../static/posts/blog-post.1.md";
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -47,12 +46,7 @@ const featuredPosts = [
   },
 ];
 
-const posts = [post1];
-
 const sidebar = {
-  title: "About",
-  description:
-    "Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.",
   categories: [
     { title: "Data Science", url: "#" },
     { title: "Technology", url: "#" },
@@ -66,7 +60,6 @@ export default function BlogHome() {
   return (
     <React.Fragment>
       <CssBaseline />
-
       <main>
         <MainFeaturedPost post={mainFeaturedPost} />
         <Grid container spacing={4}>
@@ -75,7 +68,7 @@ export default function BlogHome() {
           ))}
         </Grid>
         <Grid container spacing={5} className={classes.mainGrid}>
-          <Main title="In the Blog" posts={posts} />
+          <Main title="In the Blog" posts={""} />
           <Sidebar
             title={sidebar.title}
             description={sidebar.description}
