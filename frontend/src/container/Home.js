@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Typography, Container, Divider } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import SendIcon from "@material-ui/icons/Send";
@@ -11,24 +11,25 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
 import cssa from "../static/images/cssa.jpg";
 import hero3 from "../static/images/hero3.png";
-import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
-import Fab from "@material-ui/core/Fab";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    justifyContent: "center",
     marginTop: "3rem",
+    justifyContent: "center",
     backgroundColor: "#FFFFFF",
   },
   heroContent: {
+    display: "block",
     minWidth: "40%",
     maxWidth: "100%",
     textAlign: "left",
-    paddingBottom: "auto",
     marginBottom: "5rem",
     backgroundImage: `url(${hero3})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
+    [theme.breakpoints.up("xl")]: {
+      height: "835px",
+    },
   },
   heroTitle: {
     fontWeight: 500,
@@ -42,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   ButtonsBox: {
     marginBlock: "3rem",
     marginLeft: "2rem",
-    paddingBottom: "1rem",
+    paddingBottom: "12rem",
   },
   ColorButton: {
     background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
@@ -124,7 +125,7 @@ function Home() {
                     Contact Me
                   </Button>
                 </Box>
-                <Box>
+                {/*<Box>
                   <Fab
                     variant="extended"
                     size="small"
@@ -134,7 +135,7 @@ function Home() {
                     Scroll down
                     <ArrowDownwardIcon />
                   </Fab>
-                </Box>
+                </Box>*/}
               </div>
             </Container>
           </Box>
