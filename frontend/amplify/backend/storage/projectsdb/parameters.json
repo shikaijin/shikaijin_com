@@ -1,0 +1,5 @@
+{
+    "tableName": "projectsdb",
+    "partitionKeyName": "name",
+    "partitionKeyType": "S"
+}

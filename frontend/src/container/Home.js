@@ -1,68 +1,92 @@
-import { Typography } from "@material-ui/core";
 import React from "react";
-import { makeStyles } from "@material-ui/styles";
+import { Button, Typography, Container, Divider } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import layer from "../static/images/Website.png";
-import Link from "@material-ui/core/Link";
-import logo from "../static/images/logo.png";
+import SendIcon from "@material-ui/icons/Send";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Grid from "@material-ui/core/Grid";
+import cssa from "../static/images/cssa.jpg";
+import hero3 from "../static/images/hero3.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
-    flexWrap: "wrap",
+    marginTop: "3rem",
     justifyContent: "center",
-    marginBottom: "2rem",
-    backgroundImage: `url(${layer})`,
-    backgroundSize: "100% 100%",
-    backgroundPosition: "center",
+    backgroundColor: "#FFFFFF",
   },
-  intro: {
-    width: 700,
+  heroContent: {
+    display: "block",
     minWidth: "40%",
     maxWidth: "100%",
     textAlign: "left",
+    marginBottom: "5rem",
+    backgroundImage: `url(${hero3})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    [theme.breakpoints.up("xl")]: {
+      height: "835px",
+    },
   },
-  title: {
+  heroTitle: {
     fontWeight: 500,
-    marginTop: "10rem",
+    paddingTop: "12rem",
     marginBottom: "2rem",
-    marginLeft: "3rem",
-    color: "black",
+    marginLeft: "2rem",
   },
-  mySelf: {
-    marginTop: "10rem",
-    marginBottom: "2rem",
-    marginLeft: "3rem",
-    color: "black",
+  ButtonsDiv: {
+    marginTop: "1rem",
   },
-  shortcuts: {
+  ButtonsBox: {
     marginBlock: "3rem",
-    marginLeft: "3rem",
+    marginLeft: "2rem",
+    paddingBottom: "12rem",
   },
-  link: {
-    marginLeft: "5px",
+  ColorButton: {
+    background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
+    border: 0,
+    borderRadius: 3,
+    boxShadow: "0 3px 5px 2px rgba(33, 203, 243, .3)",
+    color: "white",
+    height: 48,
+    padding: "0 30px",
   },
-  image: {
-    width: 700,
+  heroFab: {
+    marginBlock: "3rem",
+    marginLeft: "2rem",
+  },
+  AboutButtons: {
+    p: "0.25rem",
+    marginLeft: "2rem",
+    marginRight: "2rem",
+    marginBottom: "1rem",
+  },
+
+  cardGrid: {
+    paddingTop: "2rem",
+    paddingBottom: "2rem",
+    marginBottom: "2rem",
+  },
+  subtitle: {
+    marginBottom: "3rem",
     minWidth: "40%",
     maxWidth: "100%",
-    height: "75vh",
-    backgroundImage: `url(${logo})`,
-    backgroundSize: "100% 100%",
-    backgroundPosition: "center",
+    textAlign: "center",
   },
-  contact: {
+  card: {
+    height: "100%",
     display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "flex-start",
+    flexDirection: "column",
   },
-  email: {
-    fontWeight: 600,
-    marginTop: "1rem",
-    marginBottom: "2rem",
-    marginLeft: "10%",
-    color: "balck",
+  cardMedia: {
+    paddingTop: "56.25%", // 16:9
+    backgroundSize: "contain",
+  },
+  cardContent: {
+    flexGrow: 1,
   },
 }));
 
@@ -72,54 +96,137 @@ function Home() {
     <React.Fragment>
       <CssBaseline />
       <div>
-        <Box className={classes.root} width="100%">
-          {/* Intro unit */}
-          <Box className={classes.intro}>
-            <Box className={classes.mySelf}>
-              <Typography variant="h5">Hello,</Typography>
-              <Typography variant="h3">I'm Shikai Jin</Typography>
-              <Typography variant="h5" color="primary">
-                Master of Management in Data Analytics Candidate
-              </Typography>
-              <Typography variant="subtitle1">University of Windsor</Typography>
-              {/* End intro unit */}
-              {/* Shortcuts unit */}
-              <Typography variant="subtitle1" className={classes.shortcuts}>
-                Related Page:
-                <Link
-                  href="https://uwcssa.ca/"
-                  color="inherit"
-                  className={classes.link}
-                >
-                  UWCSSA
-                </Link>
-              </Typography>
-            </Box>
-
-            {/* End shortcuts unit */}
+        <div className={classes.root}>
+          {/* Hero unit */}
+          <Box className={classes.heroContent}>
+            <Container maxWidth="lg">
+              <Box className={classes.heroTitle}>
+                <Typography variant="h4" gutterBottom>
+                  Hello,
+                </Typography>
+                <Typography variant="h3" gutterBottom>
+                  I'm Shikai Jin
+                </Typography>
+                <Typography variant="h5" color="primary">
+                  Master of Management in Data Analytics Candidate
+                </Typography>
+                <Typography variant="subtitle1">
+                  University of Windsor
+                </Typography>
+              </Box>
+              <div className={classes.ButtonsDiv}>
+                <Box className={classes.ButtonsBox}>
+                  <Button
+                    size="large"
+                    endIcon={<SendIcon />}
+                    href="mailto:shikaijin7@gmail.com"
+                    className={classes.ColorButton}
+                  >
+                    Contact Me
+                  </Button>
+                </Box>
+                {/*<Box>
+                  <Fab
+                    variant="extended"
+                    size="small"
+                    href="#About"
+                    className={classes.heroFab}
+                  >
+                    Scroll down
+                    <ArrowDownwardIcon />
+                  </Fab>
+                </Box>*/}
+              </div>
+            </Container>
           </Box>
-          {/* Logo unit */}
-          <Box className={classes.image} />
-        </Box>
-        {/* End logo unit */}
-        {/* Contact unit */}
-        <Box className={classes.contact} width="100%">
-          <Box className={classes.email}>
-            <Typography variant="h5">
-              Email:
-              <Link
-                href="mailto:shikaijin7@gmail.com"
-                color="inherit"
-                className={classes.link}
-              >
-                shikaijin7@gmail.com
-              </Link>
-            </Typography>
-          </Box>
-        </Box>
+          {/* End hero unit */}
+          {/* About unit */}
+          <section id="About">
+            <Container className={classes.cardGrid} maxWidth="md">
+              <Box className={classes.subtitle}>
+                <Typography variant="h4">About</Typography>
+              </Box>
+              <Typography variant="body1">
+                Incididunt eiusmod irure mollit minim laboris. Proident sint
+                veniam tempor in voluptate sint ex pariatur tempor dolore
+                proident. Exercitation exercitation ad duis voluptate ex minim
+                exercitation consectetur aliquip et est commodo. Est eu nulla
+                amet duis aliqua laborum minim minim quis et ipsum nulla. Tempor
+                id mollit ullamco proident eu. Velit reprehenderit fugiat Lorem
+                pariatur sit excepteur minim.
+              </Typography>
+              <div className={classes.ButtonsDiv}>
+                <Box display="flex" justifyContent="center" p={1}>
+                  <Box className={classes.AboutButtons}>
+                    <Button
+                      size="medium"
+                      className={classes.ColorButton}
+                      href="/cv/#cv"
+                    >
+                      CV
+                    </Button>
+                  </Box>
+                  <Box className={classes.AboutButtons}>
+                    <Button
+                      size="medium"
+                      className={classes.ColorButton}
+                      href="/skills/#skills"
+                    >
+                      Skills
+                    </Button>
+                  </Box>
+                </Box>
+              </div>
+            </Container>
+          </section>
+          {/* End about unit */}
+          <Divider variant="middle" />
+          {/* Projects unit */}
+          <section id="Projects">
+            <Container className={classes.cardGrid} maxWidth="md">
+              <Box className={classes.subtitle}>
+                <Typography variant="h4" gutterBottom>
+                  Recent Projects Involved
+                </Typography>
+              </Box>
+              <Grid container spacing={4}>
+                <Grid item xs={12} sm={6} md={4}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={cssa}
+                      title="Image title"
+                    />
+                    <CardContent className={classes.cardContent}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        UWCSSA Web Development
+                      </Typography>
+                      <Typography>
+                        The UWCSSA project is a web development project designed
+                        to provide an efficient working platform for the
+                        University of Windsor Chinese Students and Scholars
+                        Association and a student forum for University of
+                        Windsor students.
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button
+                        size="small"
+                        color="primary"
+                        href="https://uwcssa.ca/"
+                      >
+                        View
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              </Grid>
+            </Container>
+          </section>
+          {/* End projects unit */}
+        </div>
       </div>
     </React.Fragment>
   );
 }
-
 export default Home;
