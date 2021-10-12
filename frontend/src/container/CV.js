@@ -48,10 +48,12 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "40%",
     maxWidth: "100%",
     textAlign: "left",
+  },
 }));
 
 function CV() {
   const classes = useStyles();
+
   return (
     <div id="cv">
       <Box className={classes.root}>
