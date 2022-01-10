@@ -1,10 +1,10 @@
 import React from "react";
-import { makeStyles } from "@material-ui/styles";
-import { Box, Typography, Button } from "@material-ui/core";
+
 import cvBanner from "../static/images/cv_banner.png";
-import Divider from "@material-ui/core/Divider";
-import GetAppIcon from "@material-ui/icons/GetApp";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import { makeStyles } from "@mui/styles";
+import { Box, Button, Divider, Typography } from "@mui/material";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GetAppRoundedIcon from "@mui/icons-material/GetAppRounded";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${cvBanner})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
+    [theme.breakpoints.up("lg")]: {
+      backgroundSize: "auto 100%",
+      backgroundRepeat: "no-repeat",
+    },
   },
   text: {
     fontWeight: 700,
@@ -48,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "40%",
     maxWidth: "100%",
     textAlign: "left",
+  },
 }));
 
 function CV() {
@@ -125,7 +130,7 @@ function CV() {
                   color="primary"
                   size="medium"
                   disabled
-                  endIcon={<GetAppIcon />}
+                  endIcon={<GetAppRoundedIcon />}
                 >
                   Download CV
                 </Button>

@@ -1,34 +1,45 @@
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Container,
+  CssBaseline,
+  Divider,
+  Grid,
+  Typography,
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import React from "react";
-import { Button, Typography, Container, Divider } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import { Box } from "@material-ui/core";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import SendIcon from "@material-ui/icons/Send";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Grid from "@material-ui/core/Grid";
+import SendRoundedIcon from "@mui/icons-material/SendRounded";
+
 import cssa from "../static/images/cssa.jpg";
-import hero3 from "../static/images/hero3.png";
+import hero from "../static/images/hero.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: "3rem",
     justifyContent: "center",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "white",
   },
   heroContent: {
     display: "block",
-    minWidth: "40%",
-    maxWidth: "100%",
     textAlign: "left",
     marginBottom: "5rem",
-    backgroundImage: `url(${hero3})`,
+    backgroundImage: `url(${hero})`,
+
+    width: "100%",
+    height: "100%",
+    paddingBottom: "2rem",
+
     backgroundSize: "cover",
     backgroundPosition: "center",
-    [theme.breakpoints.up("xl")]: {
+    [theme.breakpoints.up("lg")]: {
       height: "835px",
+      backgroundSize: "auto 100%",
+      backgroundRepeat: "no-repeat",
     },
   },
   heroTitle: {
@@ -118,7 +129,7 @@ function Home() {
                 <Box className={classes.ButtonsBox}>
                   <Button
                     size="large"
-                    endIcon={<SendIcon />}
+                    endIcon={<SendRoundedIcon />}
                     href="mailto:shikaijin7@gmail.com"
                     className={classes.ColorButton}
                   >

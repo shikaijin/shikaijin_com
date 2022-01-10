@@ -1,18 +1,20 @@
 import {
   AppBar,
-  Toolbar,
-  makeStyles,
   Button,
-  IconButton,
   Drawer,
+  IconButton,
   MenuItem,
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+  Stack,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import logoIcon from "../static/images/logo.svg";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const headersData = [
   {
@@ -31,10 +33,10 @@ const headersData = [
     label: "Projects",
     href: "/projects",
   },
-  {
-    label: "Blogs",
-    href: "/blogs",
-  },
+  // {
+  //   label: "Blogs",
+  //   href: "/blogs",
+  // },
 ];
 
 const useStyles = makeStyles(() => ({
@@ -66,8 +68,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function Header() {
-  const { header, logo, icon, menuButton, toolbar, drawerContainer } =
-    useStyles();
+  const { header, icon, menuButton, toolbar, drawerContainer } = useStyles();
 
   const [state, setState] = useState({
     mobileView: false,
@@ -113,7 +114,7 @@ export default function Header() {
         <IconButton
           {...{
             edge: "start",
-            color: "inherit",
+
             "aria-label": "menu",
             "aria-haspopup": "true",
             onClick: handleDrawerOpen,
@@ -145,7 +146,7 @@ export default function Header() {
           {...{
             component: RouterLink,
             to: href,
-            color: "inherit",
+
             style: { textDecoration: "none" },
             key: label,
           }}
@@ -155,29 +156,48 @@ export default function Header() {
       );
     });
   };
+  const history = useHistory();
 
   const myLogo = (
-    <Button
-      size="large"
-      color="inherit"
-      className={logo}
-      component={Link}
-      to="/"
-      disableElevation
-      disableFocusRipple
-      disableRipple
+    // <Button
+    //   size="large"
+    //   className={logo}
+    //   component={Link}
+    //   to="/"
+    //   disableElevation
+    //   disableFocusRipple
+    //   disableRipple
+    // >
+    //   <IconButton>
+    //     <img src={logoIcon} alt="my logo" height={25} width={25} />
+    //   </IconButton>
+    //   Shikai Jin
+    // </Button>
+    <Stack
+      direction={"row"}
+      onClick={() => {
+        history.push("/");
+      }}
     >
-      <IconButton>
-        <img src={logoIcon} alt="my logo" height={25} width={25} />
-      </IconButton>
-      Shikai Jin
-    </Button>
+      <img
+        src={logoIcon}
+        alt="my logo"
+        style={{ width: 36, height: 36, marginInline: "1rem" }}
+      />
+
+      <Typography
+        style={{ cursor: "pointer", fontSize: "25px", color: "black" }}
+        // variant="h6"
+        noWrap
+      >
+        Shikai Jin
+      </Typography>
+    </Stack>
   );
 
   const icons = (
     <IconButton
-      edge="start"
-      color="inherit"
+      margin="auto"
       aria-label="github"
       href="https://github.com/shikaijin"
       className={icon}
@@ -190,9 +210,10 @@ export default function Header() {
     return headersData.map(({ label, href }) => {
       return (
         <Button
+          variant="text"
+          style={{ fontSize: "20px", marginInline: "1rem", color: "black" }}
           {...{
             key: label,
-            color: "inherit",
             to: href,
             component: RouterLink,
             className: menuButton,
@@ -206,7 +227,7 @@ export default function Header() {
 
   return (
     <header>
-      <AppBar className={header}>
+      <AppBar className={header} style={{ background: "white" }} elevation={0}>
         {mobileView ? displayMobile() : displayDesktop()}
       </AppBar>
     </header>
